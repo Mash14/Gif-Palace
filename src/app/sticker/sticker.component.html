@@ -1,0 +1,32 @@
+<body>
+<button (click)="getTrendingStickers()">Baby</button>
+<ul>
+    <div *ngFor="let sticker of trending_stickers">
+        <img src="{{sticker.url}}">
+        <h3>{{sticker.title}}</h3>
+        <p>Posted on {{sticker.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+        <p>Rating: {{sticker.rating}}</p>
+    </div>
+</ul>
+<button (click)="searchStickers()">Load More</button>
+<ul>
+    <div *ngFor="let stickers of search_stickers">
+        <img src="{{stickers.url}}">
+        <p>{{stickers.title}}</p>
+        <p>Posted on {{stickers.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+        <p>Rating: {{stickers.rating}}</p>
+       
+    </div>
+</ul>
+<br>
+<!-- <button (click)="getRandomSticker()">Get</button>
+<ul>
+    
+    <img src="{{random_sticker.url}}">
+    <p>{{random_sticker.title}}</p>
+    <div *ngIf="random_sticker.import_datetime">
+    <p>Posted on {{random_sticker.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p> 
+    </div>
+    
+</ul> -->
+</body>

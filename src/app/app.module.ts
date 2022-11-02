@@ -1,18 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StickersService } from './sticker-service/stickers.service'; 
+import { GifsService } from './gif-service/gifs.service';
+import { StickerComponent } from './sticker/sticker.component';
+import { GifComponent } from './gif/gif.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StickerComponent,
+    GifComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [StickersService,GifsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

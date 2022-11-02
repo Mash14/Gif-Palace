@@ -1,0 +1,30 @@
+<body>
+    <button (click)="searchGifs()">Bad girl</button>
+    <div *ngFor="let gif of searched_gifs">
+        <ul>
+            <img src="{{gif.url}}">
+            <p>Posted on {{gif.import_datetime|date}}</p>
+            <p>Rating: {{gif.rating}}</p>
+        </ul>
+    </div>
+
+    <button (click)="getTrendingGifs()">Trending</button>
+    <div *ngFor="let gif of trending_gifs">
+        <ul>
+            <img src="{{gif.url}}">
+            <p>Posted on {{gif.import_datetime|date}}</p>
+            <p>Rating: {{gif.rating}}</p>
+        </ul>
+    </div>
+
+    <button (click)="getRandomGif()">Random</button>
+        <div *ngFor="let gif of random_gif">
+        <ul>
+            <img src="{{gif.url}}">
+            <p>Posted on {{gif.import_datetime|date}}</p>
+            <p>Rating: {{gif.rating}}</p>
+        </ul>
+    </div>
+        
+    
+</body>
