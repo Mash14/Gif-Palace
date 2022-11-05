@@ -15,6 +15,10 @@ export class GifComponent implements OnInit {
   search_term:any = 'trending';
   num:number = 5;
 
+  search(search_ter:any) {
+    this.search_term = search_ter;
+  }
+
   constructor(private gifsService:GifsService) { }
 
   searchGifs() {

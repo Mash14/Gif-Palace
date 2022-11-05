@@ -1,21 +1,37 @@
-<h1 class="text-center">Gif Palace</h1>
-<h3>Trending Gifs</h3>
-<div *ngFor="let gif of trending_gifs">
-    <img src="{{gif.url}}">
-</div>
-
-<h3>Trending Stickers</h3>
-<div *ngFor="let sticker of trending_stickers">
-    <img src="{{sticker.url}}">
-</div>
-
-<h3>Gifs</h3>
-<div *ngFor="let gif of gifs">
-    <img src="{{gif.url}}">
-</div>
-
-<h3>Stickers</h3>
-<div *ngFor="let sticker of stickers">
-    <img src="{{sticker.url}}">
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <app-navbar (startSearch)="search($event)"></app-navbar>
+    <h1 class="text-center">Gif Palace</h1>
+    <img src="https://www.mkgifs.com/wp-content/uploads/2022/05/Moon-Knight-GIF-new2.gif">
+    <h3>Trending Gifs</h3>
+    <div *ngFor="let gif of trending_gifs">
+        <img src="{{gif.url}}">
+    </div>
+    
+    <h3>Trending Stickers</h3>
+    <div *ngFor="let sticker of trending_stickers">
+        <img src="{{sticker.url}}">
+    </div>
+    
+    <h3>Gifs</h3>
+    <div *ngFor="let gif of gifs">
+        <img src="{{gif.url}}">
+    </div>
+    
+    <h3>Stickers</h3>
+    <div *ngFor="let sticker of stickers">
+        <img src="{{sticker.url}}">
+    </div>
+    
+    </div>
+</body>
+</html>
 

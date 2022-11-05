@@ -1,4 +1,7 @@
 body {
-    background-color: black;
-    color: white;
+    background-image: url('https://www.mkgifs.com/wp-content/uploads/2022/04/Moon-Knight-GIF-WALLPAPER.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+    height: 100vh;
 }

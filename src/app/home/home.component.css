@@ -1,0 +1,11 @@
+.container {
+    background-color: black;
+    color: white;
+}
+body {
+    background-image: url('https://www.mkgifs.com/wp-content/uploads/2022/05/Moon-Knight-GIF-new2.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+    background-color: white;
+}

@@ -30,5 +30,6 @@
     "strictTemplates": true,
     "strictPropertyInitialization": false,
     "noImplicitReturns": false,
+    "js/ts.implicitProjectConfig.experimentalDecorators":true,
   }
 }

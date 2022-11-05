@@ -1,0 +1,15 @@
+:root {
+    --bg-black-900: #151515;
+    --main-bg-100: #222222;
+    --bg-black-50: #393939;
+    --text-black-900: #ffffff;
+    --text-black-700: #e9e9e9;
+    background: #151515;
+}
+
+body {
+    background-image: url('https://www.mkgifs.com/wp-content/uploads/2022/03/Wallpaper-GIF.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+}

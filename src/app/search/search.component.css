@@ -1,0 +1,107 @@
+:root {
+    --bg-black-900: #151515;
+    --main-bg-100: #222222;
+    --bg-black-50: #393939;
+    --text-black-900: #ffffff;
+    --text-black-700: #e9e9e9;
+    background: #151515;
+}
+
+
+body.light {
+    --bg-black-900: #f2f2fc;
+    --bg-black-100: #fdf9ff;
+    --bg-black-50: #e8dfec;
+    --text-black-900: #302e4d;
+    --text-black-700: #504e70;
+    background: var(--bg-black-100) ;
+}
+body {
+    /* background-color: #222222; */
+    /* background-color: black; */
+    
+    background-image: url('https://www.mkgifs.com/wp-content/uploads/2022/05/Moon-Knight-GIF-new5-transformation.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+    
+}
+/* body {
+    height: 100vh;
+} */
+.now {
+    background-color: #050404;
+    /* background-image: url('https://www.mkgifs.com/wp-content/uploads/2022/05/Moon-Knight-GIF-new5-transformation.gif'); */
+}
+h5 {
+    color: var(--text-black-700);
+    /* color: yellow; */
+}
+.section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* for row and column gap */
+}
+.section::after {
+    content: "";
+    flex-basis: 500px; /* make the last line is at the end*/
+}
+.section_image {
+    flex: 25%;
+    /* max-width: 25%;  */
+    height: 300px;
+    width: 250px;
+    position: relative;
+    cursor: pointer;
+    /* flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;  they are all just flex*/ 
+    flex: 1 1 auto;
+    opacity: 0.9;
+    
+}
+.section_image:hover {
+    box-shadow: 0 0 20px rgba(76, 66, 209, 0.5);
+    opacity: 1;
+}
+.section_image img {
+    width: max-content;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+.sections {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.sections_image {
+    flex: 25%;
+    max-width: 25%;
+}
+.sections_image img {
+    object-fit: cover;
+    width: max-content;
+    width: 250px;
+}
+h3 {
+    margin: 6px;
+}
+.stickers {
+    display:none;
+}
+#sticky {
+    background-color: black;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+#gify {
+    background-color: blue;
+    cursor: pointer;
+    transition: all 0.4s;
+}

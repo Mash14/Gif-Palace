@@ -16,9 +16,29 @@ export class HomeComponent implements OnInit {
   gifs:Gif[] = [];
   stickers:Sticker[] = [];
   num:number = 2;
-  search_term = 'happy';
+  
+
+ 
 
   constructor(private stickerService:StickersService,private gifsService:GifsService) { }
+
+  search(search_term:any) {
+    // searched gifs
+    this.gifsService.getGifs(search_term,this.num).subscribe(res => {
+      console.log(res);
+      for(let i = 0; i <= res.data.length; i++) {
+        this.gifs.push(new Gif(res.data[i].id,res.data[i].images.downsized.url,res.data[i].title,new Date(res.data[i].import_datetime),new Date(res.data[i].trending_datetime),res.data[i].rating));
+      };
+    });
+
+    // searched stickers
+    this.stickerService.getStickers(search_term,this.num).subscribe(res => {
+      console.log(res)
+      for(let i = 0; i <= res.data.length; i++) {
+        this.stickers.push(new Sticker(res.data[i].id,res.data[i].images.downsized.url,res.data[i].title,new Date(res.data[i].import_datetime),new Date(res.data[i].trending_datetime),res.data[i].rating));
+      }
+    })
+  }
 
   ngOnInit(): void {
     // trending gif
@@ -38,21 +58,7 @@ export class HomeComponent implements OnInit {
       };
     });
 
-    // searched gifs
-    this.gifsService.getGifs(this.search_term,this.num).subscribe(res => {
-      console.log(res);
-      for(let i = 0; i <= res.data.length; i++) {
-        this.gifs.push(new Gif(res.data[i].id,res.data[i].images.downsized.url,res.data[i].title,new Date(res.data[i].import_datetime),new Date(res.data[i].trending_datetime),res.data[i].rating));
-      };
-    });
-
-    // searched stickers
-    this.stickerService.getStickers(this.search_term,this.num).subscribe(res => {
-      console.log(res)
-      for(let i = 0; i <= res.data.length; i++) {
-        this.stickers.push(new Sticker(res.data[i].id,res.data[i].images.downsized.url,res.data[i].title,new Date(res.data[i].import_datetime),new Date(res.data[i].trending_datetime),res.data[i].rating));
-      }
-    })
+    
   }
 
 }
