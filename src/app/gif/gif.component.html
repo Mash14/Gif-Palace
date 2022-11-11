@@ -7,32 +7,44 @@
     <title>Document</title>
 </head>
 <body>
-    <app-navbar (startSearch)="search($event)"></app-navbar>
-    <button (click)="searchGifs()">Bad girl</button>
-    <div *ngFor="let gif of searched_gifs">
-        <ul>
-            <img src="{{gif.url}}">
-            <p>Posted on {{gif.import_datetime|date}}</p>
-            <p>Rating: {{gif.rating}}</p>
-        </ul>
-    </div>
+    <div class="container">
+        <app-navbar (startSearch)="searchGifs($event)"></app-navbar>
+        <div class="now">
+            <h1 class="text-center">GIFS</h1>
+            <div *ngIf="searched_gifs.length > 1">
+                
+                <h3>Showing Results for "{{search_term}}"</h3>
+                <div class="section">
+                    <div *ngFor="let gif of searched_gifs">
+                        <div class="section_image">
+                            <img src="{{gif.url}}" alt="{{gif.title}}">
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            <div *ngIf="searched_gifs.length < 1">
+                
+                <h4 routerLink="/trending/gifs">Trending Gifs</h4>
+                <div class="section">    
+                    <div *ngFor="let gif of trending_gifs">
+                        <div class="section_image">
+                            <img src="{{gif.url}}" alt="{{gif.title}}">
+                        </div>
+                    </div>
+                </div>
 
-    <button (click)="getTrendingGifs()">Trending</button>
-    <div *ngFor="let gif of trending_gifs">
-        <ul>
-            <img src="{{gif.url}}">
-            <p>Posted on {{gif.import_datetime|date}}</p>
-            <p>Rating: {{gif.rating}}</p>
-        </ul>
-    </div>
+                <h4>Random Gifs</h4>
+                <div class="section">
+                    <div *ngFor="let gif of unsearched_gifs">
+                        <div class="section_image">
+                            <img src="{{gif.url}}" alt="{{gif.title}}">
+                        </div>
+                    </div>
+                </div>
 
-    <button (click)="getRandomGif()">Random</button>
-        <div *ngFor="let gif of random_gif">
-        <ul>
-            <img src="{{gif.url}}">
-            <p>Posted on {{gif.import_datetime|date}}</p>
-            <p>Rating: {{gif.rating}}</p>
-        </ul>
+            </div>
+        </div>
     </div>
 </body>
 </html>

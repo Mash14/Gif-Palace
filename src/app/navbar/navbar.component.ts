@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
 
   search() {
     this.startSearch.emit(this.searchTerm);
-    this.searchTerm = ''
+    // this.searchTerm = ''
   }
   constructor() { }
 

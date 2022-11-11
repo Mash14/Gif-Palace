@@ -1,7 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 body {
     background-image: url('https://www.mkgifs.com/wp-content/uploads/2022/04/Moon-Knight-GIF-WALLPAPER.gif');
     background-repeat: no-repeat;
     background-attachment: fixed;  
     background-size: cover;
-    height: 100vh;
+    color: white;
+}
+
+.now {
+    background-color: rgba(1, 2, 1, 0.5);
+    height: 100%;
+}
+h1 {
+    font-weight: 700;
+}
+h5 {
+    color: var(--text-black-700);
+    /* color: yellow; */
+}
+.section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* for row and column gap */
+}
+.section::after {
+    content: "";
+    flex-basis: 500px; /* make the last line is at the end*/
+}
+.section_image {
+    flex: 25%;
+    height: 300px;
+    width: 250px;
+    position: relative;
+    cursor: pointer;
+    flex: 1 1 auto;
+    opacity: 0.9;
+    background: black;
+}
+.section_image:hover {
+    box-shadow: 0 0 20px rgba(76, 66, 209, 0.5);
+    opacity: 1;
+}
+.section_image img {
+    width: max-content;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+h3 {
+    margin: 6px;
+}
+
+#modalstyle {
+    background: black;
+}
+
+
+@media screen and (max-width:1100px) {
+    .section_image {
+        flex: 33%;
+        /* max-width: 33%; */
+        height: 300px;
+        width: 200px;
+    }
+    .sections_image {
+        flex: 33%;
+        max-width: 33%;
+    }
+}
+
+@media screen and (max-width:770px) {
+    .section_image {
+        flex: 50%; 
+        
+        height: 300px;
+        width: 250px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .section_image {
+        flex: 25%;
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media screen and (max-width:350px) {
+    .section_image {
+        flex: 50%;
+        width: 100px;
+    }
 }

@@ -1,1 +1,24 @@
-<p>trending-gifs works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Gifs</title>
+</head>
+<body>
+    <div class="container">
+        <app-navbar></app-navbar>
+        <div class="now">
+            <h1 class="text-center">Trending Gifs</h1>
+            <div class="section">
+                <div *ngFor="let gif of trending_gifs">
+                    <div class="section_image">
+                        <img src="{{gif.url}}" alt="{{gif.title}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

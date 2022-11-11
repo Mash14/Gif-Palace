@@ -5,7 +5,7 @@ import { StickersService } from '../sticker-service/stickers.service';
 import { GifsService } from '../gif-service/gifs.service';
 
 declare function hideStickers(): any;
-declare function hideGifs():any 
+declare function hideGifs():any;
 
 @Component({
   selector: 'app-search',
@@ -18,6 +18,8 @@ export class SearchComponent implements OnInit {
   gifs:Gif[] = []
   num:number = 15;
   searchTerm!:string;
+  display = 'none'
+  gifModal!:any;
   
   constructor(private stickerService:StickersService, private gifService:GifsService) { }
 
@@ -49,9 +51,12 @@ export class SearchComponent implements OnInit {
     })
   }
 
+
   ngOnInit(): void {
     
   
   }
+  
+  
 
 }

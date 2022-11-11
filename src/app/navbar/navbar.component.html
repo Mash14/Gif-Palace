@@ -36,9 +36,9 @@
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </li>
             </ul>
-            <form class="d-flex" (ngSubmit)="search()" onclick="routerLink='/search'" #searchForm ="ngForm">
+            <form class="d-flex" (ngSubmit)="search()" #searchForm ="ngForm">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchTerm" [(ngModel)]="searchTerm" required>
-              <button class="btn btn-outline-success" type="submit" (click)="search()" routerLink="/search">Search</button>
+              <button class="btn btn-outline-success" type="submit" (click)="search()">Search</button>
             </form>
           </div>
         </div>

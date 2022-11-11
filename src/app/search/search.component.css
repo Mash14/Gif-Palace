@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 :root {
     --bg-black-900: #151515;
     --main-bg-100: #222222;
@@ -24,14 +25,15 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;  
     background-size: cover;
-    
+    color: white;
+
 }
 /* body {
     height: 100vh;
 } */
 .now {
-    background-color: #050404;
-    /* background-image: url('https://www.mkgifs.com/wp-content/uploads/2022/05/Moon-Knight-GIF-new5-transformation.gif'); */
+    background-color: rgba(1, 2, 1, 0.5);
+    height: 100%;
 }
 h5 {
     color: var(--text-black-700);
@@ -74,26 +76,15 @@ h5 {
     vertical-align: middle;
     border-radius: 5px;
 }
-.sections {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-.sections_image {
-    flex: 25%;
-    max-width: 25%;
-}
-.sections_image img {
-    object-fit: cover;
-    width: max-content;
-    width: 250px;
-}
+
 h3 {
     margin: 6px;
 }
 .stickers {
     display:none;
+}
+.sticker {
+    background: black;
 }
 #sticky {
     background-color: black;
@@ -104,4 +95,41 @@ h3 {
     background-color: blue;
     cursor: pointer;
     transition: all 0.4s;
+}
+
+@media screen and (max-width:1100px) {
+    .section_image {
+        flex: 33%;
+        /* max-width: 33%; */
+        height: 300px;
+        width: 200px;
+    }
+    .sections_image {
+        flex: 33%;
+        max-width: 33%;
+    }
+}
+
+@media screen and (max-width:770px) {
+    .section_image {
+        flex: 50%; 
+        
+        height: 300px;
+        width: 250px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .section_image {
+        flex: 25%;
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media screen and (max-width:350px) {
+    .section_image {
+        flex: 50%;
+        width: 100px;
+    }
 }

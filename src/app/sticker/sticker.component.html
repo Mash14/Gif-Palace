@@ -1,32 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stickers</title>
+</head>
 <body>
-<button (click)="getTrendingStickers()">Baby</button>
-<ul>
-    <div *ngFor="let sticker of trending_stickers">
-        <img src="{{sticker.url}}">
-        <h3>{{sticker.title}}</h3>
-        <p>Posted on {{sticker.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
-        <p>Rating: {{sticker.rating}}</p>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<div class="container">
+    <app-navbar (startSearch)="searchStickers($event)"></app-navbar>
+    <h1 class="text-center">STICKERS</h1>
+    <div *ngIf="search_stickers.length > 1">
+        <div class="section">
+            <div *ngFor="let sticker of search_stickers;let i = index">
+                <div class="section_image">
+                    <img src="{{sticker.url}}" alt="{{sticker.title}}" (click)="open(i)"> 
+                </div>
+
+                <div class="modal custom fade" id="stickerModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content"  id="modalstyle">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="stickerModalLabel">{{sticker.title}}</h5>
+                                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+                            </div>
+                            
+                            <div class="modal-body">
+                                <img src="{{sticker.url}}" alt="{{sticker.title}}">
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <p>Posted on {{sticker.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+                                <p>Rated "{{sticker.rating}}"</p>
+                                <p>{{sticker.id}}</p>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="load">
+                    <!-- <button (click)="showMore()">Load More Stickers</button> -->
+                </div>
+            </div>
+        </div>
     </div>
-</ul>
-<button (click)="searchStickers()">Load More</button>
-<ul>
-    <div *ngFor="let stickers of search_stickers">
-        <img src="{{stickers.url}}">
-        <p>{{stickers.title}}</p>
-        <p>Posted on {{stickers.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
-        <p>Rating: {{stickers.rating}}</p>
-       
+    <!-- <button (click)="searchStickers()">Load More</button> -->
+    <div *ngIf="search_stickers.length < 1">
+        
+        <h4 routerLink="/trending/stickers">Trending Stickers</h4>
+        <div class="section">
+            <div *ngFor="let stickers of trending_stickers">
+                <div class="section_image">
+                    <img src="{{stickers.url}}" alt="{{stickers.title}}">
+                </div>
+            </div>
+        </div>
+        
+        <h4>Stickers</h4>
+        <div class="section">
+            <div *ngFor="let sticker of stickers">
+                <div class="section_image">
+                    <img src="{{sticker.url}}" alt="{{sticker.title}}">
+                </div>
+            </div>
+        </div>
     </div>
-</ul>
-<br>
-<!-- <button (click)="getRandomSticker()">Get</button>
-<ul>
     
-    <img src="{{random_sticker.url}}">
-    <p>{{random_sticker.title}}</p>
-    <div *ngIf="random_sticker.import_datetime">
-    <p>Posted on {{random_sticker.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p> 
-    </div>
-    
-</ul> -->
+    <!-- <button (click)="getRandomSticker()">Get</button>
+    <ul>
+        
+        <img src="{{random_sticker.url}}">
+        <p>{{random_sticker.title}}</p>
+        <div *ngIf="random_sticker.import_datetime">
+        <p>Posted on {{random_sticker.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p> 
+        </div>
+        
+    </ul> -->
+</div>
 </body>
+</html>

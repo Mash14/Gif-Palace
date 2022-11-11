@@ -30,7 +30,7 @@ import { TrendingGifsComponent } from './trending-gifs/trending-gifs.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [StickersService,GifsService],
   bootstrap: [AppComponent]
