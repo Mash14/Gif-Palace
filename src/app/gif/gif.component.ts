@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Gif } from '../gif';
 import { GifsService } from '../gif-service/gifs.service';
+import { Modal } from 'bootstrap';
 
 @Component({
   selector: 'app-gif',
@@ -13,7 +14,12 @@ export class GifComponent implements OnInit {
   trending_gifs:Gif[] = [];
   unsearched_gifs:Gif[] = [];
   search_term:any = 'funny soft why scary player';
-  num:number = 5;
+  num:number = 8;
+
+  // Modal
+  searchModal!:Modal;
+  trendingModal!:Modal;
+  gifModal!:Modal;
 
   constructor(private gifsService:GifsService) { }
 
@@ -38,10 +44,6 @@ export class GifComponent implements OnInit {
   //   })
   // }
 
-  getTrendingGifs() {
-   
-  }
-
   ngOnInit(): void {
     // Trending Gifs
     this.gifsService.getTrendingGifs(this.num).subscribe(res => {
@@ -60,4 +62,34 @@ export class GifComponent implements OnInit {
     });
   }
 
+  // Modal
+  open(index:any) {
+    let test = document.getElementById('gifModal'+index)
+    if(test) {
+      this.searchModal = new Modal(test,{
+        keyboard:false
+      });
+    }
+    this.searchModal.show()
+  }
+
+  openTrending(index:any) {
+    let test = document.getElementById('gifModal'+index)
+    if(test) {
+      this.trendingModal = new Modal(test, {
+        keyboard:false
+      })
+    }
+    this.trendingModal.show()
+  }
+
+  openModal(index:any) {
+    let test = document.getElementById('gifsModal'+index)
+    if(test) {
+      this.gifModal = new Modal(test, {
+        keyboard:false
+      })
+    }
+    this.gifModal.show()
+  }
 }

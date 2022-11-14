@@ -11,9 +11,29 @@
         <app-navbar></app-navbar>
         <h1 class="text-center">Trending Stickers</h1>
         <div class="section">
-            <div *ngFor="let sticker of trending_stickers">
+            <div *ngFor="let sticker of trending_stickers; let i = index">
                 <div class="section_image">
-                    <img src="{{sticker.url}}" alt="{{sticker.title}}">
+                    <img src="{{sticker.url}}" alt="{{sticker.title}}" (click)="openModal(i)">
+                </div>
+
+                <div class="modal custom fade" id="stickersModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content"  id="modalstyle">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="stickerModalLabel">{{sticker.title}}</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            
+                            <div class="modal-body mx-auto d-block">
+                                <img src="{{sticker.url}}" alt="{{sticker.title}}">
+                            </div>
+                            
+                            <div class="modal-footer footers">
+                                <p class="text-center">Posted on {{sticker.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+                                <p class="text-center">Rated "{{sticker.rating}}"</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -20,6 +20,8 @@ export class StickerComponent implements OnInit {
   num:number = 8
   
   stickerModal!:Modal;
+  trendingModal!:Modal;
+  stickersModal!:Modal;
   // searched:Sticker[] = this.search_stickers.slice(0,10)
   // showMore() {
   //   let newLength = this.searched.length + 10;
@@ -82,6 +84,28 @@ export class StickerComponent implements OnInit {
       })
     }
     this.stickerModal.show();
+  }
+  openTrending(index:any) {
+    // this.search_stickers[index].id  = id 
+    let test = document.getElementById('stickerTrendingModal' + index);
+    if(test ) {
+       
+      this.trendingModal = new Modal(test,{
+        keyboard:false
+      })
+    }
+    this.trendingModal.show();
+  }
+  openStickers(index:any) {
+    // this.search_stickers[index].id  = id 
+    let test = document.getElementById('stickersModal' + index);
+    if(test ) {
+       
+      this.stickersModal = new Modal(test,{
+        keyboard:false
+      })
+    }
+    this.stickersModal.show();
   }
 
 }

@@ -15,9 +15,29 @@
                 
                 <h3>Showing Results for "{{search_term}}"</h3>
                 <div class="section">
-                    <div *ngFor="let gif of searched_gifs">
+                    <div *ngFor="let gif of searched_gifs; let i = index">
                         <div class="section_image">
-                            <img src="{{gif.url}}" alt="{{gif.title}}">
+                            <img src="{{gif.url}}" alt="{{gif.title}}" (click)="open(i)">
+                        </div>
+
+                        <div class="modal custom fade" id="gifModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content"  id="modalstyle">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="stickerModalLabel">{{gif.title}}</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    
+                                    <div class="modal-body">
+                                        <img src="{{gif.url}}" alt="{{gif.title}}">
+                                    </div>
+                                    
+                                    <div class="modal-footer footers">
+                                        <p>Posted on {{gif.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+                                        <p>Rated "{{gif.rating}}"</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -25,20 +45,60 @@
             </div>
             <div *ngIf="searched_gifs.length < 1">
                 
-                <h4 routerLink="/trending/gifs">Trending Gifs</h4>
+                <h4 class="text-center" routerLink="/trending/gifs">Trending gifs</h4>
                 <div class="section">    
-                    <div *ngFor="let gif of trending_gifs">
+                    <div *ngFor="let gif of trending_gifs; let i = index">
                         <div class="section_image">
-                            <img src="{{gif.url}}" alt="{{gif.title}}">
+                            <img src="{{gif.url}}" alt="{{gif.title}}" (click)="openTrending(i)">
+                        </div>
+
+                        <div class="modal custom fade" id="gifModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content"  id="modalstyle">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-center" id="stickerModalLabel">{{gif.title}}</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    
+                                    <div class="modal-body mx-auto d-block">
+                                        <img src="{{gif.url}}" alt="{{gif.title}}">
+                                    </div>
+                                    
+                                    <div class="modal-footer footers">
+                                        <p>Posted on {{gif.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+                                        <p>Rated "{{gif.rating}}"</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <h4>Random Gifs</h4>
+                <h4 class="text-center">Random Gifs</h4>
                 <div class="section">
-                    <div *ngFor="let gif of unsearched_gifs">
+                    <div *ngFor="let gif of unsearched_gifs; let i = index">
                         <div class="section_image">
-                            <img src="{{gif.url}}" alt="{{gif.title}}">
+                            <img src="{{gif.url}}" alt="{{gif.title}}" (click)="openModal(i)">
+                        </div>
+
+                        <div class="modal custom fade" id="gifsModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content"  id="modalstyle">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="stickerModalLabel">{{gif.title}}</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    
+                                    <div class="modal-body mx-auto d-block">
+                                        <img src="{{gif.url}}" alt="{{gif.title}}">
+                                    </div>
+                                    
+                                    <div class="modal-footer footers">
+                                        <p>Posted on {{gif.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+                                        <p>Rated "{{gif.rating}}"</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

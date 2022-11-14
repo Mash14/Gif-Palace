@@ -7,23 +7,8 @@
     <title>Stickers</title>
 </head>
 <body>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
+
+
 <div class="container">
     <app-navbar (startSearch)="searchStickers($event)"></app-navbar>
     <h1 class="text-center">STICKERS</h1>
@@ -39,18 +24,16 @@
                         <div class="modal-content"  id="modalstyle">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="stickerModalLabel">{{sticker.title}}</h5>
-                                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             
                             <div class="modal-body">
                                 <img src="{{sticker.url}}" alt="{{sticker.title}}">
                             </div>
                             
-                            <div class="modal-footer">
+                            <div class="modal-footer footers">
                                 <p>Posted on {{sticker.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
                                 <p>Rated "{{sticker.rating}}"</p>
-                                <p>{{sticker.id}}</p>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
@@ -64,20 +47,60 @@
     <!-- <button (click)="searchStickers()">Load More</button> -->
     <div *ngIf="search_stickers.length < 1">
         
-        <h4 routerLink="/trending/stickers">Trending Stickers</h4>
+        <h4 class="text-center" routerLink="/trending/stickers">Trending Stickers</h4>
         <div class="section">
-            <div *ngFor="let stickers of trending_stickers">
+            <div *ngFor="let stickers of trending_stickers; let i = index">
                 <div class="section_image">
-                    <img src="{{stickers.url}}" alt="{{stickers.title}}">
+                    <img src="{{stickers.url}}" alt="{{stickers.title}}" (click)="openTrending(i)">
+                </div>
+
+                <div class="modal custom fade" id="stickerTrendingModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content"  id="modalstyle">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="stickerModalLabel">{{stickers.title}}</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            
+                            <div class="modal-body mx-auto d-block">
+                                <img src="{{stickers.url}}" alt="{{stickers.title}}">
+                            </div>
+                            
+                            <div class="modal-footer footers">
+                                <p>Posted on {{stickers.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+                                <p>Rated "{{stickers.rating}}"</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <h4>Stickers</h4>
+        <h4 class="text-center" routerLink="/stickers">Stickers</h4>
         <div class="section">
-            <div *ngFor="let sticker of stickers">
+            <div *ngFor="let sticker of stickers; let i = index">
                 <div class="section_image">
-                    <img src="{{sticker.url}}" alt="{{sticker.title}}">
+                    <img src="{{sticker.url}}" alt="{{sticker.title}}" (click)="openStickers(i)">
+                </div>
+
+                <div class="modal custom fade" id="stickersModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content"  id="modalstyle">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="stickerModalLabel">{{sticker.title}}</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            
+                            <div class="modal-body mx-auto d-block">
+                                <img src="{{sticker.url}}" alt="{{sticker.title}}">
+                            </div>
+                            
+                            <div class="modal-footer footers">
+                                <p class="text-center">Posted on {{sticker.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+                                <p class="text-center">Rated "{{sticker.rating}}"</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

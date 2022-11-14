@@ -3,6 +3,7 @@ import { Gif } from '../gif';
 import { Sticker } from '../sticker';
 import { StickersService } from '../sticker-service/stickers.service';
 import { GifsService } from '../gif-service/gifs.service';
+import { Modal } from 'bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -17,8 +18,11 @@ export class HomeComponent implements OnInit {
   stickers:Sticker[] = [];
   num:number = 2;
   
-
- 
+  // Modal
+  trendingStickerModal!:Modal;
+  trendingGifModal!:Modal;
+  gifModal!:Modal;
+  stickerModal!:Modal;
 
   constructor(private stickerService:StickersService,private gifsService:GifsService) { }
 
@@ -56,9 +60,45 @@ export class HomeComponent implements OnInit {
         this.trending_stickers.push(new Sticker(res.data[i].id,res.data[i].images.downsized.url,res.data[i].title,new Date(res.data[i].import_datetime),new Date(res.data[i].trending_datetime),res.data[i].rating));
         
       };
-    });
+    }); 
+  }
 
-    
+  // Modal
+  openTrendingStickersModal(index:any) {
+    let test = document.getElementById('stickersModal'+index)
+    if(test) {
+      this.trendingStickerModal = new Modal(test, {
+        keyboard:false
+      })
+    }
+    this.trendingStickerModal.show()
+  }
+  openTrendingGifModal(index:any) {
+    let test = document.getElementById('gifsModal'+index)
+    if(test) {
+      this.trendingGifModal = new Modal(test, {
+        keyboard:false
+      })
+    }
+    this.trendingGifModal.show()
+  }
+  openStickerModal(index:any) {
+    let test = document.getElementById('stickersModal'+index)
+    if(test) {
+      this.stickerModal = new Modal(test, {
+        keyboard:false
+      })
+    }
+    this.stickerModal.show()
+  }
+  openGifModal(index:any) {
+    let test = document.getElementById('gifsModal'+index)
+    if(test) {
+      this.gifModal = new Modal(test, {
+        keyboard:false
+      })
+    }
+    this.gifModal.show()
   }
 
 }

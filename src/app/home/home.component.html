@@ -7,31 +7,86 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <app-navbar (startSearch)="search($event)"></app-navbar>
+<div class="container">
+    <app-navbar (startSearch)="search($event)"></app-navbar>
     <h1 class="text-center">Gif Palace</h1>
-    <img src="https://www.mkgifs.com/wp-content/uploads/2022/05/Moon-Knight-GIF-new2.gif">
-    <h3>Trending Gifs</h3>
-    <div *ngFor="let gif of trending_gifs">
-        <img src="{{gif.url}}">
+    <h3 class="text-center">Trending Gifs</h3>
+    <div class="section">
+        <div *ngFor="let gif of trending_gifs; let i = index">
+            <div class="section_image">
+                <img src="{{gif.url}}">
+            </div>
+        </div>
     </div>
     
-    <h3>Trending Stickers</h3>
-    <div *ngFor="let sticker of trending_stickers">
-        <img src="{{sticker.url}}">
+    <h3 class="text-center">Trending Stickers</h3>
+    <div class="section">
+        <div *ngFor="let sticker of trending_stickers; let i = index">
+            <div class="section_image">
+                <img src="{{sticker.url}}">
+            </div>
+
+            <div class="modal custom fade" id="stickersModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content"  id="modalstyle">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="stickerModalLabel">{{sticker.title}}</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        
+                        <div class="modal-body mx-auto d-block">
+                            <img src="{{sticker.url}}" alt="{{sticker.title}}">
+                        </div>
+                        
+                        <div class="modal-footer footers">
+                            <p class="text-center">Posted on {{sticker.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+                            <p class="text-center">Rated "{{sticker.rating}}"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
-    <h3>Gifs</h3>
-    <div *ngFor="let gif of gifs">
-        <img src="{{gif.url}}">
+    <h3 class="text-center">Gifs</h3>
+    <div class="section">
+        <div *ngFor="let gif of gifs; let i = index">
+            <div class="section_image">
+                <img src="{{gif.url}}">
+            </div>
+        </div>
     </div>
     
-    <h3>Stickers</h3>
-    <div *ngFor="let sticker of stickers">
-        <img src="{{sticker.url}}">
+    <h3 class="text-center">Stickers</h3>
+    <div class="section">
+        <div *ngFor="let sticker of stickers; let i = index">
+            <div class="section_image">
+                <img src="{{sticker.url}}">
+            </div>
+
+            <div class="modal custom fade" id="stickersModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content"  id="modalstyle">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="stickerModalLabel">{{sticker.title}}</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        
+                        <div class="modal-body mx-auto d-block">
+                            <img src="{{sticker.url}}" alt="{{sticker.title}}">
+                        </div>
+                        
+                        <div class="modal-footer footers">
+                            <p class="text-center">Posted on {{sticker.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+                            <p class="text-center">Rated "{{sticker.rating}}"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
-    </div>
+</div>
 </body>
 </html>
 

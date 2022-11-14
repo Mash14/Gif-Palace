@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Gif } from '../gif';
 import { GifsService } from '../gif-service/gifs.service';
+import { Modal } from 'bootstrap';
 
 @Component({
   selector: 'app-trending-gifs',
@@ -12,6 +13,7 @@ export class TrendingGifsComponent implements OnInit {
   trending_gifs:Gif[] = [];
   num:number = 50;
 
+  trendingModal!:Modal;
   constructor(private gifService:GifsService) { }
 
   ngOnInit(): void {
@@ -23,4 +25,13 @@ export class TrendingGifsComponent implements OnInit {
     })
   }
 
+  openTrending(index:any) {
+    let test = document.getElementById('gifModal'+index)
+    if(test) {
+      this.trendingModal = new Modal(test, {
+        keyboard:false
+      })
+    }
+    this.trendingModal.show()
+  }
 }
