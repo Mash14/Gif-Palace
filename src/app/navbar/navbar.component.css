@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 /* body {
     background-image: url('https://www.mkgifs.com/wp-content/uploads/2022/07/2-1.gif');
     background-repeat: no-repeat;
@@ -6,3 +7,138 @@
     background-size: cover;
     height: 100vh;
 } */
+
+.topnav {
+    overflow: hidden;
+    background-color: black;
+    color: #f2f2f2;
+}
+.topnav .item {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 14px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.gify {
+    font-family: 'Lobster', cursive;
+    font-weight: 700;
+    font-size: 22px;
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 12px 16px;
+    /* font-size: 17px; */
+    cursor: pointer;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+
+.dropdown .dropbtn {
+    font-size: 17px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 14px;
+    background: black;
+}
+
+.dropdown .dropbtn:hover .fa-caret-down {
+    transform: rotate(180deg);
+    transition: all 0.3s;
+}
+
+.dropdowns-content {
+    display: none;
+    position: fixed;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+    background: black;
+}
+
+.dropdowns-content .drops {
+    float: none;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    /* background: black; */
+    cursor: pointer;
+}
+
+.topnav .item:hover, .dropdown:hover .dropbtn {
+    /* background: rgb(54, 54, 54); */
+    -webkit-transform: scale(1.15);
+	transform: scale(1.15);
+}
+
+.dropdowns-content .drops:hover {
+    /* background: rgb(54, 54, 54); */
+    -webkit-transform: scale(1.15);
+	transform: scale(1.15);
+} 
+
+.dropdown:hover .dropdowns-content {
+    display: block;
+} 
+.hide {
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    margin-right: 10px;
+}
+.show {
+    display: none;
+    margin-top: 5px;
+}
+
+@media screen and (max-width:1400px) {
+    .hide {
+        display: none;
+    }
+    .show {
+        display: block;
+    }
+}
+
+@media screen and (max-width:770px) {
+    .topnav .item {
+        padding: 12px 12px;
+    }
+    .topnav .item .resize {
+        display: none;
+    }
+    .dropdown .dropbtn .resize {
+        display: none;
+    }
+    .dropdown .dropdowns-content .resize {
+        display: none;
+    }
+    .dropdown .dropdowns-content {
+        min-width: 60px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .gify {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:370px) {
+    .gify {
+        display: none;
+    }
+}

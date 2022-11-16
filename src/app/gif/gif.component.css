@@ -6,6 +6,7 @@ body {
     background-size: cover;
     color: white;
     /* height: 100vh; */
+    font-family: 'Poppins', sans-serif;
 }
 
 .now {
@@ -35,6 +36,7 @@ h5 {
     cursor: pointer;
     flex: 1 1 auto;
     opacity: 0.9;
+    border-radius: 5px;
 }
 .section_image:hover {
     box-shadow: 0 0 20px rgba(76, 66, 209, 0.5);
@@ -68,8 +70,15 @@ h5 {
     font-weight: 400;
 }
 
+.close {
+    font-weight: 600;
+    font-size: 22px;
+    color: white;
+}
+
 #modalstyle {
     background: rgba(0, 0, 0, 0.7);
+    /* background: #fff;s */
 }
 
 

@@ -5,25 +5,113 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 <div class="container">
     <app-navbar (startSearch)="search($event)"></app-navbar>
     <h1 class="text-center">Gif Palace</h1>
-    <h3 class="text-center">Trending Gifs</h3>
+    <div *ngIf="searched_gifs.length > 1">
+        <h5>Search For More Gifs and Stickers <a routerLink="/search">Here</a></h5>
+        <h3  routerLink="/gifs">Gifs</h3>
+        <div class="section">
+            <div *ngFor="let gif of searched_gifs; let i = index">
+                <div class="section_image">
+                    <img src="{{gif.url}}" (click)="openSearchedGifModal(i)">
+                </div>
+
+                <div class="modal custom fade" id="gifModals{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content"  id="modalstyle">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center" id="stickerModalLabel">{{gif.title}}</h5>
+                                <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">X</span>
+                                </button>
+                            </div>
+                            
+                            <div class="modal-body mx-auto d-block">
+                                <img src="{{gif.url}}" alt="{{gif.title}}">
+                            </div>
+                            
+                            <div class="modal-footer footers">
+                                <p>Posted on {{gif.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+                                <p>Rated "{{gif.rating}}"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3  routerLink="/stickers">Stickers</h3>
+        <div class="section">
+            <div *ngFor="let sticker of searched_stickers; let i = index">
+                <div class="section_image">
+                    <img src="{{sticker.url}}" (click)="openSearchedStickerModal(i)">
+                </div>
+
+                <div class="modal custom fade" id="stickerModals{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content"  id="modalstyle">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="stickerModalLabel">{{sticker.title}}</h5>
+                                <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">X</span>
+                                </button>
+                            </div>
+                            
+                            <div class="modal-body mx-auto d-block">
+                                <img src="{{sticker.url}}" alt="{{sticker.title}}">
+                            </div>
+                            
+                            <div class="modal-footer footers">
+                                <p class="text-center">Posted on {{sticker.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+                                <p class="text-center">Rated "{{sticker.rating}}"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3  routerLink="/trending/gifs">Trending Gifs</h3>
     <div class="section">
         <div *ngFor="let gif of trending_gifs; let i = index">
             <div class="section_image">
-                <img src="{{gif.url}}">
+                <img src="{{gif.url}}" (click)="openTrendingGifModal(i)">
+            </div>
+
+            <div class="modal custom fade" id="gifsModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content"  id="modalstyle">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-center" id="stickerModalLabel">{{gif.title}}</h5>
+                            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">X</span>
+                            </button>
+                        </div>
+                        
+                        <div class="modal-body mx-auto d-block">
+                            <img src="{{gif.url}}" alt="{{gif.title}}">
+                        </div>
+                        
+                        <div class="modal-footer footers">
+                            <p>Posted on {{gif.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+                            <p>Rated "{{gif.rating}}"</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     
-    <h3 class="text-center">Trending Stickers</h3>
+    <h3  routerLink="/trending/stickers">Trending Stickers</h3>
     <div class="section">
         <div *ngFor="let sticker of trending_stickers; let i = index">
             <div class="section_image">
-                <img src="{{sticker.url}}">
+                <img src="{{sticker.url}}" (click)="openTrendingStickersModal(i)">
             </div>
 
             <div class="modal custom fade" id="stickersModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
@@ -31,7 +119,9 @@
                     <div class="modal-content"  id="modalstyle">
                         <div class="modal-header">
                             <h5 class="modal-title" id="stickerModalLabel">{{sticker.title}}</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">X</span>
+                            </button>
                         </div>
                         
                         <div class="modal-body mx-auto d-block">
@@ -48,28 +138,52 @@
         </div>
     </div>
     
-    <h3 class="text-center">Gifs</h3>
+    <h3  routerLink="/gifs">Gifs</h3>
     <div class="section">
         <div *ngFor="let gif of gifs; let i = index">
             <div class="section_image">
-                <img src="{{gif.url}}">
+                <img src="{{gif.url}}" (click)="openGifModal(i)">
+            </div>
+
+            <div class="modal custom fade" id="gifModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content"  id="modalstyle">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-center" id="stickerModalLabel">{{gif.title}}</h5>
+                            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">X</span>
+                            </button>
+                        </div>
+                        
+                        <div class="modal-body mx-auto d-block">
+                            <img src="{{gif.url}}" alt="{{gif.title}}">
+                        </div>
+                        
+                        <div class="modal-footer footers">
+                            <p>Posted on {{gif.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p>
+                            <p>Rated "{{gif.rating}}"</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     
-    <h3 class="text-center">Stickers</h3>
+    <h3  routerLink="/stickers">Stickers</h3>
     <div class="section">
         <div *ngFor="let sticker of stickers; let i = index">
             <div class="section_image">
-                <img src="{{sticker.url}}">
+                <img src="{{sticker.url}}" (click)="openStickerModal(i)">
             </div>
 
-            <div class="modal custom fade" id="stickersModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+            <div class="modal custom fade" id="stickerModal{{i}}" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content"  id="modalstyle">
                         <div class="modal-header">
                             <h5 class="modal-title" id="stickerModalLabel">{{sticker.title}}</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">X</span>
+                            </button>
                         </div>
                         
                         <div class="modal-body mx-auto d-block">
@@ -85,7 +199,7 @@
             </div>
         </div>
     </div>
-    
+    <app-footer></app-footer>
 </div>
 </body>
 </html>

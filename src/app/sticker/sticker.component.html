@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stickers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -24,7 +25,9 @@
                         <div class="modal-content"  id="modalstyle">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="stickerModalLabel">{{sticker.title}}</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">X</span>
+                                </button>
                             </div>
                             
                             <div class="modal-body">
@@ -38,13 +41,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="load">
-                    <!-- <button (click)="showMore()">Load More Stickers</button> -->
-                </div>
+                
             </div>
         </div>
     </div>
-    <!-- <button (click)="searchStickers()">Load More</button> -->
+    
     <div *ngIf="search_stickers.length < 1">
         
         <h4 class="text-center" routerLink="/trending/stickers">Trending Stickers</h4>
@@ -59,7 +60,9 @@
                         <div class="modal-content"  id="modalstyle">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="stickerModalLabel">{{stickers.title}}</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">X</span>
+                                </button>
                             </div>
                             
                             <div class="modal-body mx-auto d-block">
@@ -88,7 +91,9 @@
                         <div class="modal-content"  id="modalstyle">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="stickerModalLabel">{{sticker.title}}</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">X</span>
+                                </button>
                             </div>
                             
                             <div class="modal-body mx-auto d-block">
@@ -105,17 +110,7 @@
             </div>
         </div>
     </div>
-    
-    <!-- <button (click)="getRandomSticker()">Get</button>
-    <ul>
-        
-        <img src="{{random_sticker.url}}">
-        <p>{{random_sticker.title}}</p>
-        <div *ngIf="random_sticker.import_datetime">
-        <p>Posted on {{random_sticker.import_datetime|date:"h:mm:ssa, MMM d, y"}}</p> 
-        </div>
-        
-    </ul> -->
+    <app-footer></app-footer>
 </div>
 </body>
 </html>

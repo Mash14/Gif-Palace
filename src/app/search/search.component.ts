@@ -3,6 +3,8 @@ import { Gif } from '../gif';
 import { Sticker } from '../sticker';
 import { StickersService } from '../sticker-service/stickers.service';
 import { GifsService } from '../gif-service/gifs.service';
+import { Modal } from 'bootstrap'
+import { Title } from '@angular/platform-browser';
 
 declare function hideStickers(): any;
 declare function hideGifs():any;
@@ -16,12 +18,15 @@ export class SearchComponent implements OnInit {
 
   stickers:Sticker[] = []
   gifs:Gif[] = []
-  num:number = 15;
+  num:number = 50;
   searchTerm!:string;
-  display = 'none'
-  gifModal!:any;
-  
-  constructor(private stickerService:StickersService, private gifService:GifsService) { }
+  title = 'Gif Palace - Search'
+
+  // Modal
+  gifModal!:Modal;
+  stickerModal!:Modal;
+
+  constructor(private stickerService:StickersService, private gifService:GifsService, private titleService:Title) { }
 
   showGifs() {
     hideStickers();
@@ -53,10 +58,30 @@ export class SearchComponent implements OnInit {
 
 
   ngOnInit(): void {
-    
-  
+    // Title
+    this.titleService.setTitle(this.title)
+   
   }
   
-  
+  // Modal
+  openGifModal(index:any) {
+    let test = document.getElementById('gifModal'+index)
+    if(test) {
+      this.gifModal = new Modal(test, {
+        keyboard:false
+      })
+    }
+    this.gifModal.show()
+  }
+
+  openStickerModal(index:any) {
+    let test = document.getElementById('stickersModal'+index)
+    if(test) {
+      this.stickerModal = new Modal(test, {
+        keyboard:false
+      })
+    }
+    this.stickerModal.show()
+  }
 
 }

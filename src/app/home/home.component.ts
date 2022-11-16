@@ -4,6 +4,7 @@ import { Sticker } from '../sticker';
 import { StickersService } from '../sticker-service/stickers.service';
 import { GifsService } from '../gif-service/gifs.service';
 import { Modal } from 'bootstrap';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,11 @@ export class HomeComponent implements OnInit {
   trending_stickers:Gif[] = []
   gifs:Gif[] = [];
   stickers:Sticker[] = [];
-  num:number = 2;
+  searched_gifs:Gif[]=[];
+  searched_stickers:Sticker[]=[];
+  num:number = 8;
+  search_term:any = 'fly high'
+  title = 'Gif Palace - Home';
   
   // Modal
   trendingStickerModal!:Modal;
@@ -24,14 +29,17 @@ export class HomeComponent implements OnInit {
   gifModal!:Modal;
   stickerModal!:Modal;
 
-  constructor(private stickerService:StickersService,private gifsService:GifsService) { }
+  constructor(private stickerService:StickersService,private gifsService:GifsService, private titleService:Title) { }
 
   search(search_term:any) {
+    this.num = 2
+    this.searched_gifs = []
+    this.searched_stickers = []
     // searched gifs
     this.gifsService.getGifs(search_term,this.num).subscribe(res => {
       console.log(res);
       for(let i = 0; i <= res.data.length; i++) {
-        this.gifs.push(new Gif(res.data[i].id,res.data[i].images.downsized.url,res.data[i].title,new Date(res.data[i].import_datetime),new Date(res.data[i].trending_datetime),res.data[i].rating));
+        this.searched_gifs.push(new Gif(res.data[i].id,res.data[i].images.downsized.url,res.data[i].title,new Date(res.data[i].import_datetime),new Date(res.data[i].trending_datetime),res.data[i].rating));
       };
     });
 
@@ -39,12 +47,14 @@ export class HomeComponent implements OnInit {
     this.stickerService.getStickers(search_term,this.num).subscribe(res => {
       console.log(res)
       for(let i = 0; i <= res.data.length; i++) {
-        this.stickers.push(new Sticker(res.data[i].id,res.data[i].images.downsized.url,res.data[i].title,new Date(res.data[i].import_datetime),new Date(res.data[i].trending_datetime),res.data[i].rating));
+        this.searched_stickers.push(new Sticker(res.data[i].id,res.data[i].images.downsized.url,res.data[i].title,new Date(res.data[i].import_datetime),new Date(res.data[i].trending_datetime),res.data[i].rating));
       }
     })
   }
 
   ngOnInit(): void {
+    //Title
+    this.titleService.setTitle(this.title)
     // trending gif
     this.gifsService.getTrendingGifs(this.num).subscribe(res=> {
       console.log(res)
@@ -61,6 +71,22 @@ export class HomeComponent implements OnInit {
         
       };
     }); 
+
+    // searched gifs
+    this.gifsService.getGifs(this.search_term,this.num).subscribe(res => {
+      console.log(res);
+      for(let i = 0; i <= res.data.length; i++) {
+        this.gifs.push(new Gif(res.data[i].id,res.data[i].images.downsized.url,res.data[i].title,new Date(res.data[i].import_datetime),new Date(res.data[i].trending_datetime),res.data[i].rating));
+      };
+    });
+
+    // searched stickers
+    this.stickerService.getStickers(this.search_term,this.num).subscribe(res => {
+      console.log(res)
+      for(let i = 0; i <= res.data.length; i++) {
+        this.stickers.push(new Sticker(res.data[i].id,res.data[i].images.downsized.url,res.data[i].title,new Date(res.data[i].import_datetime),new Date(res.data[i].trending_datetime),res.data[i].rating));
+      }
+    })
   }
 
   // Modal
@@ -83,7 +109,7 @@ export class HomeComponent implements OnInit {
     this.trendingGifModal.show()
   }
   openStickerModal(index:any) {
-    let test = document.getElementById('stickersModal'+index)
+    let test = document.getElementById('stickerModal'+index)
     if(test) {
       this.stickerModal = new Modal(test, {
         keyboard:false
@@ -91,8 +117,29 @@ export class HomeComponent implements OnInit {
     }
     this.stickerModal.show()
   }
+
   openGifModal(index:any) {
-    let test = document.getElementById('gifsModal'+index)
+    let test = document.getElementById('gifModal'+index)
+    if(test) {
+      this.gifModal = new Modal(test, {
+        keyboard:false
+      })
+    }
+    this.gifModal.show()
+  }
+
+  openSearchedStickerModal(index:any) {
+    let test = document.getElementById('stickerModals'+index)
+    if(test) {
+      this.stickerModal = new Modal(test, {
+        keyboard:false
+      })
+    }
+    this.stickerModal.show()
+  }
+
+  openSearchedGifModal(index:any) {
+    let test = document.getElementById('gifModals'+index)
     if(test) {
       this.gifModal = new Modal(test, {
         keyboard:false

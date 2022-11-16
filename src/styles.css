@@ -1,2 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css"
+@import "~bootstrap/dist/css/bootstrap.css";
+
+/* for share buttons  */
+@import '~@angular/cdk/overlay-prebuilt.css'; /** Add this only for non-material project */
+/* @import '~ngx-sharebuttons/themes/default'; */

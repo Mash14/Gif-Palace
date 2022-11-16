@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 body {
-    background-image: url('https://www.mkgifs.com/wp-content/uploads/2022/04/Moon-Knight-GIF-WALLPAPER.gif');
+    background-image: url('https://www.mkgifs.com/wp-content/uploads/2022/06/Moonknight-GIF-NEW3.gif');
     background-repeat: no-repeat;
     background-attachment: fixed;  
     background-size: cover;
     color: white;
+    font-family: 'Poppins', sans-serif;
 }
 
 .now {
@@ -38,6 +39,7 @@ h5 {
     flex: 1 1 auto;
     opacity: 0.9;
     background: black;
+    border-radius: 5px;
 }
 .section_image:hover {
     box-shadow: 0 0 20px rgba(76, 66, 209, 0.5);
@@ -68,6 +70,11 @@ h5 {
     display: flex;
     flex-direction: column;
     font-weight: 400;
+}
+.close {
+    font-weight: 600;
+    font-size: 22px;
+    color: white;
 }
 
 #modalstyle {

@@ -6,6 +6,7 @@ import { StickerComponent } from './sticker/sticker.component';
 import { SearchComponent } from './search/search.component';
 import { TrendingGifsComponent } from './trending-gifs/trending-gifs.component';
 import { TrendingStickersComponent } from './trending-stickers/trending-stickers.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component:HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent},
   { path: 'trending/gifs', component: TrendingGifsComponent},
   { path: 'trending/stickers', component: TrendingStickersComponent},
+  { path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({

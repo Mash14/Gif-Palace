@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Sticker } from '../sticker';
 import { StickersService } from '../sticker-service/stickers.service';
 import { Modal } from 'bootstrap';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -11,30 +12,24 @@ import { Modal } from 'bootstrap';
 })
 export class StickerComponent implements OnInit { 
 
-  random_sticker!:Sticker;
   trending_stickers:Sticker[] = [];
   search_stickers:Sticker[] = [];
   stickers:Sticker[] = [];
 
-  search_term:any = 'funny tripping';
+  search_term:any = 'king majesty';
   num:number = 8
+  title = 'Gif Palace - Stickers'
   
+  // Modal 
   stickerModal!:Modal;
   trendingModal!:Modal;
   stickersModal!:Modal;
-  // searched:Sticker[] = this.search_stickers.slice(0,10)
-  // showMore() {
-  //   let newLength = this.searched.length + 10;
-  //   if (newLength > this.search_stickers.length) {
-  //     newLength = this.search_stickers.length
-  //   }; 
-  //   this.searched = this.search_stickers.slice(0, newLength)
-  // }
-  constructor(private stickerService:StickersService) { }
+ 
+  constructor(private stickerService:StickersService, private titleService:Title) { }
 
   searchStickers(search_term:any) {
     this.search_stickers = []
-    this.num = 20
+    this.num = 50
     this.stickerService.getStickers(search_term,this.num).subscribe(res => {
       console.log(res)
       for(let i = 0; i <= res.data.length; i++) {
@@ -43,17 +38,10 @@ export class StickerComponent implements OnInit {
     })
   }
 
-  // getRandomSticker() {
-  //   this.stickerService.getRandomSticker(this.search_term).subscribe( res => {
-  //     console.log(res)
-      
-  //     this.random_sticker = new Sticker(res.data.id,res.data.images.downsized.url,res.data.title,new Date(res.date.import_datetime),new Date(res.date.trending_datetime));
-      
-  //   });
-  // };
-
-
   ngOnInit(): void {
+    //Title
+    this.titleService.setTitle(this.title)
+    
     // Stickers
     this.stickerService.getStickers(this.search_term,this.num).subscribe(res => {
       console.log(res)

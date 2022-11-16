@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Sticker } from '../sticker';
 import { StickersService } from '../sticker-service/stickers.service';
 import { Modal } from 'bootstrap';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-trending-stickers',
@@ -12,12 +13,16 @@ export class TrendingStickersComponent implements OnInit {
 
   trending_stickers:Sticker[] = []
   num:number = 50;
+  title = 'Gif Palace - Trending Stickers'
 
   // Modal
   trendingModal!:Modal;
-  constructor(private stickerService:StickersService) { }
+  constructor(private stickerService:StickersService, private titleService:Title) { }
 
   ngOnInit(): void {
+    // Title
+    this.titleService.setTitle(this.title)
+    
     this.stickerService.getTrendingStickers(this.num).subscribe((res:any) => {
 
       for(let i=0; i<=res.data.length; i++) {

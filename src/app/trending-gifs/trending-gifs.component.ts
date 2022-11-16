@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Gif } from '../gif';
 import { GifsService } from '../gif-service/gifs.service';
 import { Modal } from 'bootstrap';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-trending-gifs',
@@ -12,11 +13,15 @@ export class TrendingGifsComponent implements OnInit {
 
   trending_gifs:Gif[] = [];
   num:number = 50;
+  title = 'Gif Palace - Trending Gifs'
 
   trendingModal!:Modal;
-  constructor(private gifService:GifsService) { }
+  constructor(private gifService:GifsService, private titleService:Title) { }
 
   ngOnInit(): void {
+    // Title
+    this.titleService.setTitle(this.title)
+    
     this.gifService.getTrendingGifs(this.num).subscribe(res => {
       console.log(res);
       for(let i = 0; i <= res.data.length; i++) {

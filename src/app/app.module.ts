@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
@@ -15,6 +15,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
 import { TrendingStickersComponent } from './trending-stickers/trending-stickers.component';
 import { TrendingGifsComponent } from './trending-gifs/trending-gifs.component';
+// for share buttons 
+import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { FooterComponent } from './footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -25,16 +32,22 @@ import { TrendingGifsComponent } from './trending-gifs/trending-gifs.component';
     NavbarComponent,
     SearchComponent,
     TrendingStickersComponent,
-    TrendingGifsComponent
+    TrendingGifsComponent,
+    NotFoundComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-  
+    ShareButtonsPopupModule,
+    ShareIconsModule,
+    ShareButtonsModule.withConfig({
+      debug: true
+    }),
   ],
-  providers: [StickersService,GifsService],
+  providers: [StickersService,GifsService,Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
