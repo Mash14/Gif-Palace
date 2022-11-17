@@ -29,6 +29,8 @@ The Project is used to deliver quality gif and stickers to the user. The user fi
     ```sudo npm install -g @angular/cli@latest```
 - Clone the app to you local repository
     ```git clone https://github.com/Mash14/Gif-Palace.git```
+- Install all required modules
+    ```nmp i```
 - Go to [Giphy](https://developers.giphy.com/) signup and request for an api key then add it in the environment.ts
 - Run the development server using `ng serve`
 
@@ -80,4 +82,5 @@ There are no known bugs
 
 ## License and Copyright information
 
-The license and copyright information can be found here: [MIT-Lisence](https://opensource.org/licenses/MIT)
+The license information can be found here: [MIT-Lisence](https://opensource.org/licenses/MIT)
+Copyright (c)_17/11/2022__Alan Macharia_
