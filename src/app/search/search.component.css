@@ -139,6 +139,9 @@ h5 {
         width: 150px;
         height: 150px;
     }
+    .col-xs-6 {
+        width: 50%;
+    }
 }
 
 @media screen and (max-width:350px) {
